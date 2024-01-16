@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stampa Numeri</title>
+  <script>
+    function stampaNumeri() {
+      var numeroInput = document.getElementById("numeroInput").value;
+      var output = document.getElementById("output");
+
+ 
+      output.innerHTML = "";
+
+     
+      for (var i = 1; i <= numeroInput; i++) {
+        output.innerHTML += i + "<br>";
+      }
+
+   
+      var dieciPercento = numeroInput * 0.1;
+      output.innerHTML += "<br>10% del numero in input: " + dieciPercento;
+e
+     
+  </script>
+</head>
+<body>
+  <h1>10%</h1>
+  <label for="numeroInput">Inserisci un numero a piacimento:</label>
+  <input type="number" id="numeroInput" />
+  <button onclick="stampaNumeri()">Stampa i numeri </button>
+  <div id="output"></div>
+</body>
+</html>
