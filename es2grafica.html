@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Definisci uno stile per i quadrati */
+        .square {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #000; /* Bordo di 1 pixel nero */
+            margin: 5px; /* Spazio tra i quadrati */
+            display: inline-block;
+        }
+    </style>
+    <title>Generatore di Div</title>
+</head>
+<body>
+    <label for="numeroDiv">Inserisci il numero di div:</label>
+    <input type="number" id="numeroDiv" min="1" value="1">
+    <button onclick="creaDiv()">Genera Div</button>
+
+    <script>
+        function creaDiv() {
+            // Ottieni il numero inserito dall'utente
+            var numeroDiv = document.getElementById("numeroDiv").value;
+
+            // Seleziona l'elemento dove inserire i div
+            var container = document.body;
+
+            // Rimuovi eventuali div esistenti
+            container.innerHTML = "";
+
+            // Crea il numero di div specificato dall'utente utilizzando un ciclo for
+            for (var i = 0; i < numeroDiv; i++) {
+                var div = document.createElement("div");
+                div.className = "square";
+                // Assegna colori a piacere
+                div.style.backgroundColor = getRandomColor();
+                container.appendChild(div);
+            }
+        }
+
+        // Funzione per generare colori casuali
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
