@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quadrato di Quadrati</title>
+    <title>Quadrato di Quadrati con Rose e Assi</title>
     <style>
         body {
             display: flex;
@@ -11,50 +11,67 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #fff;
+            background-color: #fff; /* Colore di sfondo bianco */
         }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(10, 60px); /* 10 colonne di 60px ciascuna */
             gap: 2px;
         }
 
         .quadrato {
-            width: 30px; 
-            height: 30px;
+            width: 60px; /* Dimensione del quadrato interno */
+            height: 60px;
             display: inline-block;
-            border: 1px solid #000; 
+            border: 1px solid #000; /* Nero */
             margin: 2px;
+            overflow: hidden; /* Per gestire immagini più grandi */
         }
 
         .grigio-scuro {
-            background-color: #333; 
+            background-color: #333; /* Grigio scuro */
+            color: #fff; /* Testo bianco per contrasto */
         }
 
         .grigio-chiaro {
-            background-color: #f0f0f0;
+            background-color: #f0f0f0; /* Grigio chiaro */
+        }
+
+        .quadrato img {
+            width: 100%; /* Riempie completamente il quadrato */
+            height: 100%;
+            object-fit: cover; /* Ridimensiona l'immagine mantenendo l'aspect ratio */
         }
     </style>
 </head>
 <body>
-    
+    <!-- Script JavaScript per generare i quadrati -->
     <script>
-        
+        // Creazione di un elemento div (container)
         const container = document.createElement('div');
         container.className = 'container';
         document.body.appendChild(container);
 
-        
+        // Ciclo da 1 a 100
         for (let i = 1; i <= 100; i++) {
-            
+            // Creazione di un elemento div (quadrato)
             const quadrato = document.createElement('div');
             quadrato.className = 'quadrato';
 
-            
+            // Assegnazione della classe alternata
             quadrato.classList.add(i % 2 === 0 ? 'grigio-chiaro' : 'grigio-scuro');
 
-            
+            // Creazione di un elemento img
+            const img = document.createElement('img');
+
+            // Assegnazione di src alternato (rosa e asso)
+            img.src = i % 2 === 0 ? 'https://i.pinimg.com/originals/c9/91/d2/c991d2874a3dbe2bd6d8837b1c209223.gif' : 'https://i.gifer.com/7Uw.gif';
+
+            // Aggiunta dell'img al quadrato
+            quadrato.appendChild(img);
+
+            // Aggiunta del quadrato al container
             container.appendChild(quadrato);
         }
     </script>
