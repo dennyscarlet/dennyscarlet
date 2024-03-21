@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> esercizio array</title>
+</head>
+<body>
+ 
+    <p id="out"></p>
+    <div>
+        <button id="countButton" onclick="countElements()">Conta elementi</button>
+        <button id="addButton" onclick="addOrder()">Ordina</button>
+        <button id="deleteButton" onclick="deleteElement()">Elimina</button>
+        <button id="buyButton" onclick="buy()">Compra</button>
+        <p id="fruitsOut"></p>
+    </div>
+
+    <script>
+        let drinks = ["Coca-Cola", "Sprite", "Fanta", "acqua", "Birra"]; 
+        let orders = []; 
+
+        
+        function displayOutput(message) {
+            document.getElementById("out").innerHTML = message;
+        }
+
+        
+        function displayDrinks() {
+            document.getElementById("fruitsOut").innerHTML = drinks.join(", ");
+        }
+
+      
+        function countElements() {
+            displayOutput("Numero di drink: " + drinks.length);
+        }
+
+        
+        function addOrder() {
+            let drinkName = prompt("Inserisci il nome del drink da ordinare:");
+            let index = drinks.indexOf(drinkName);
+            if (index !== -1) {
+                orders.push(index);
+                displayOutput("Hai aggiunto " + drinkName + " all'ordine.");
+            } else {
+                displayOutput("Drink non trovato.");
+            }
+        }
+
+        
+        function deleteElement() {
+            let index = prompt("Inserisci l'indice del drink da togliere:");
+            if (index && index >= 0 && index < drinks.length) {
+                drinks.splice(index, 1);
+                displayDrinks();
+            } else {
+                displayOutput("non valido");
+            }
+        }
+
+        function buy() {
+            if (orders.length === 0) {
+                displayOutput("Nessun ordine da comprare.");
+            } else {
+                let orderedDrinks = orders.map(index => drinks[index]);
+                displayOutput("Drink ordinati: " + orderedDrinks.join(", "));
+            }
+        }
+
+        displayDrinks(); 
+    </script>
+   
+</body>
+</html>
