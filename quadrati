@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>verifica info</title>
+<style>
+    .square {
+        width: 100px;
+        height: 100px;
+        margin: 1px;
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+    }
+</style>
+</head>
+<body>
+<script>
+    function isPrime(n) {
+        let bPrime = true;
+        let factor = 2;
+        while (factor <= (n / 2)) {
+            if (n % factor == 0) {
+                bPrime = false;
+            }
+            factor++;
+        }
+        return bPrime;
+    }
+
+
+    const squaresContainer = document.createElement('div');
+    squaresContainer.style.display = 'flex';
+    squaresContainer.style.flexWrap = 'wrap';
+
+
+    const numbersArray = [];
+    for (let i = 100; i <= 200; i++) {
+        numbersArray.push(i);
+    }
+
+
+    for (let i = 0; i < numbersArray.length; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        square.textContent = numbersArray[i];
+
+
+        if (numbersArray[i] % 10 === 0) {
+            square.style.backgroundColor = 'lightblue';
+        } else {
+            square.style.backgroundColor = 'lightgrey';
+        }
+
+
+       
+        if (isPrime(numbersArray[i])) {
+            square.style.backgroundColor = 'lightgrey';
+        }
+
+
+        squaresContainer.appendChild(square);
+    }
+
+
+    document.body.appendChild(squaresContainer);
+</script>
+</body>
+</html>
